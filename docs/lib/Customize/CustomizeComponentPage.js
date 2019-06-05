@@ -4,8 +4,8 @@ import { PrismCode } from 'react-prism';
 import { Button } from 'reactstrap';
 import Helmet from 'react-helmet';
 import CustomizeComponentExample from '../examples/CustomizeComponentExample';
-const DownloadButtonSource = require('!!raw!../examples/DownloadButton');
-const CustomizeComponentExampleSource = require('!!raw!../examples/CustomizeComponentExample');
+const DownloadButtonSource = require('!!raw-loader!../examples/DownloadButton');
+const CustomizeComponentExampleSource = require('!!raw-loader!../examples/CustomizeComponentExample');
 
 export default class CustomizeComponentPage extends React.Component {
   render() {
@@ -14,7 +14,8 @@ export default class CustomizeComponentPage extends React.Component {
         <Helmet title="PosterImage" />
         <h3>Customize Component</h3>
         <p>
-          There is an example on how to add a download button component into <code>Video-React</code> Player.
+          There is an example on how to add a download button component into{' '}
+          <code>Video-React</code> Player.
         </p>
         <div className="docs-example">
           <CustomizeComponentExample />
@@ -22,9 +23,7 @@ export default class CustomizeComponentPage extends React.Component {
         <p />
         <h4>DownloadButton Component</h4>
         <pre>
-          <PrismCode className="language-jsx">
-            {DownloadButtonSource}
-          </PrismCode>
+          <PrismCode className="language-jsx">{DownloadButtonSource}</PrismCode>
         </pre>
         <h4>Using the Download Button Component</h4>
         <pre>

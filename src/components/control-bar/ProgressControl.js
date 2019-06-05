@@ -8,19 +8,18 @@ import SeekBar from './SeekBar';
 
 const propTypes = {
   player: PropTypes.object,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default class ProgressControl extends Component {
-
   constructor(props, context) {
     super(props, context);
 
     this.state = {
       mouseTime: {
         time: null,
-        position: 0,
-      },
+        position: 0
+      }
     };
 
     this.handleMouseMoveThrottle = this.handleMouseMove.bind(this);
@@ -30,7 +29,9 @@ export default class ProgressControl extends Component {
     if (!event.pageX) {
       return;
     }
-    const { player: { duration } } = this.props;
+    const {
+      player: { duration }
+    } = this.props;
     const node = findDOMNode(this.seekBar);
     const newTime = Dom.getPointerPosition(node, event).x * duration;
     const position = event.pageX - Dom.findElPosition(node).left;
@@ -38,8 +39,8 @@ export default class ProgressControl extends Component {
     this.setState({
       mouseTime: {
         time: newTime,
-        position,
-      },
+        position
+      }
     });
   }
 
@@ -48,15 +49,16 @@ export default class ProgressControl extends Component {
     return (
       <div
         onMouseMove={this.handleMouseMoveThrottle}
-        className={classNames('video-react-progress-control video-react-control', className)}
+        className={classNames(
+          'video-react-progress-control video-react-control',
+          className
+        )}
       >
         <SeekBar
           mouseTime={this.state.mouseTime}
-          ref={
-            (c) => {
-              this.seekBar = c;
-            }
-          }
+          ref={c => {
+            this.seekBar = c;
+          }}
           {...this.props}
         />
       </div>

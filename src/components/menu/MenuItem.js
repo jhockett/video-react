@@ -6,11 +6,10 @@ const propTypes = {
   item: PropTypes.object,
   index: PropTypes.number,
   activateIndex: PropTypes.number,
-  onSelectItem: PropTypes.func,
+  onSelectItem: PropTypes.func
 };
 
 export default class MenuItem extends Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -28,8 +27,9 @@ export default class MenuItem extends Component {
       <li
         className={classNames({
           'video-react-menu-item': true,
-          'video-react-selected': index === activateIndex,
+          'video-react-selected': index === activateIndex
         })}
+        role="menuitem"
         onClick={this.handleClick}
       >
         {item.label}

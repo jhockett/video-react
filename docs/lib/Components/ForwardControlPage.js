@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import Helmet from 'react-helmet';
 import ForwardControlExample from '../examples/ForwardControl';
 
-const ForwardControlExampleSource = require('!!raw!../examples/ForwardControl');
+const ForwardControlExampleSource = require('!!raw-loader!../examples/ForwardControl');
 
 export default class ForwardControlPage extends React.Component {
   render() {
@@ -13,9 +13,7 @@ export default class ForwardControlPage extends React.Component {
       <div>
         <Helmet title="ForwardControl" />
         <h3>ForwardControl</h3>
-        <p>
-        A button in control bar to go forward 5/10/30 seconds.
-        </p>
+        <p>A button in control bar to go forward 5/10/30 seconds.</p>
         <div className="docs-example">
           <ForwardControlExample />
         </div>
@@ -27,7 +25,7 @@ export default class ForwardControlPage extends React.Component {
         <h4>Properties</h4>
         <pre>
           <PrismCode className="language-jsx">
-                        {`ForwardControl.propTypes = {
+            {`ForwardControl.propTypes = {
 
   // How many seconds to go forward
   // default: 10

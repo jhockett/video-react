@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 
 const propTypes = {
   player: PropTypes.object,
-  children: PropTypes.any,
+  children: PropTypes.any
 };
 
 export default class Popup extends Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -22,17 +21,11 @@ export default class Popup extends Component {
   render() {
     const { children } = this.props;
     return (
-      <div
-        className="video-react-menu"
-        onClick={this.handleClick}
-      >
-        <div className="video-react-menu-content">
-          { children }
-        </div>
+      <div className="video-react-menu" onClick={this.handleClick}>
+        <div className="video-react-menu-content">{children}</div>
       </div>
     );
   }
-
 }
 
 Popup.propTypes = propTypes;

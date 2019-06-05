@@ -54,7 +54,6 @@ class Fullscreen {
     document.removeEventListener('mozfullscreenchange', handler);
     document.removeEventListener('MSFullscreenChange', handler);
   }
-
 }
 
 export default new Fullscreen();

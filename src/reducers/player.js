@@ -1,14 +1,35 @@
 import {
-  LOAD_START, CAN_PLAY,
-  WAITING, CAN_PLAY_THROUGH, PLAYING,
-  PLAY, PAUSE, END, SEEKING, SEEKED,
-  SEEKING_TIME, END_SEEKING, DURATION_CHANGE,
-  TIME_UPDATE, VOLUME_CHANGE, PROGRESS_CHANGE,
-  RATE_CHANGE, SUSPEND, ABORT, EMPTIED,
-  STALLED, LOADED_META_DATA, LOADED_DATA,
-  RESIZE, ERROR
+  LOAD_START,
+  CAN_PLAY,
+  WAITING,
+  CAN_PLAY_THROUGH,
+  PLAYING,
+  PLAY,
+  PAUSE,
+  END,
+  SEEKING,
+  SEEKED,
+  SEEKING_TIME,
+  END_SEEKING,
+  DURATION_CHANGE,
+  TIME_UPDATE,
+  VOLUME_CHANGE,
+  PROGRESS_CHANGE,
+  RATE_CHANGE,
+  SUSPEND,
+  ABORT,
+  EMPTIED,
+  STALLED,
+  LOADED_META_DATA,
+  LOADED_DATA,
+  RESIZE,
+  ERROR
 } from '../actions/video';
-import { FULLSCREEN_CHANGE, PLAYER_ACTIVATE, USER_ACTIVATE } from '../actions/player';
+import {
+  FULLSCREEN_CHANGE,
+  PLAYER_ACTIVATE,
+  USER_ACTIVATE
+} from '../actions/player';
 
 const initialState = {
   currentSrc: null,
@@ -31,10 +52,10 @@ const initialState = {
   hasStarted: false,
   userActivity: true,
   isActive: false,
-  isFullscreen: false,
+  isFullscreen: false
 };
 
-export function player(state = initialState, action) {
+export default function player(state = initialState, action) {
   switch (action.type) {
     case USER_ACTIVATE:
       return {
@@ -49,7 +70,7 @@ export function player(state = initialState, action) {
     case FULLSCREEN_CHANGE:
       return {
         ...state,
-        isFullscreen: !!action.isFullscreen,
+        isFullscreen: !!action.isFullscreen
       };
     case SEEKING_TIME:
       return {
@@ -59,20 +80,20 @@ export function player(state = initialState, action) {
     case END_SEEKING:
       return {
         ...state,
-        seekingTime: 0,
+        seekingTime: 0
       };
     case LOAD_START:
       return {
         ...state,
         ...action.videoProps,
         hasStarted: false,
-        ended: false,
+        ended: false
       };
     case CAN_PLAY:
       return {
         ...state,
         ...action.videoProps,
-        waiting: false,
+        waiting: false
       };
     case WAITING:
       return {
@@ -95,7 +116,7 @@ export function player(state = initialState, action) {
         paused: false,
         autoPaused: false,
         waiting: false,
-        hasStarted: true,
+        hasStarted: true
       };
     case PAUSE:
       return {
@@ -140,18 +161,11 @@ export function player(state = initialState, action) {
     case LOADED_META_DATA:
     case LOADED_DATA:
     case RESIZE:
-      const newState = {
+      return {
         ...state,
-        ...action.videoProps,
+        ...action.videoProps
       };
-      if (action.videoProps.paused === false) {
-        newState.hasStarted = true;
-        newState.waiting = false;
-      }
-      return newState;
     default:
       return state;
   }
 }
-
-export default player;

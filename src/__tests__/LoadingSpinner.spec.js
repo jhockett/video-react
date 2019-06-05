@@ -7,10 +7,10 @@ describe('LoadingSpinner', () => {
     const wrapper = shallow(
       <LoadingSpinner
         player={{
-          error: true,
+          error: true
         }}
       />
-      );
+    );
     expect(wrapper.type()).toBe(null);
   });
 
@@ -20,10 +20,10 @@ describe('LoadingSpinner', () => {
         player={{
           hasStarted: true,
           seeking: true,
-          waiting: true,
+          waiting: true
         }}
       />
-      );
+    );
     expect(wrapper.type()).toBe('div');
   });
 
@@ -33,9 +33,10 @@ describe('LoadingSpinner', () => {
         player={{
           hasStarted: true,
           seeking: true,
-          waiting: true,
+          waiting: true
         }}
-      />);
+      />
+    );
     expect(wrapper.hasClass('video-react-loading-spinner')).toBe(true);
   });
 });

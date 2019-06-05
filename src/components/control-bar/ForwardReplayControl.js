@@ -4,16 +4,15 @@ import React, { Component } from 'react';
 const propTypes = {
   actions: PropTypes.object,
   className: PropTypes.string,
-  seconds: PropTypes.oneOf([5, 10, 30]),
+  seconds: PropTypes.oneOf([5, 10, 30])
 };
 
 const defaultProps = {
-  seconds: 10,
+  seconds: 10
 };
 
-export default (mode) => {
+export default mode => {
   class ForwardReplayControl extends Component {
-
     constructor(props, context) {
       super(props, context);
       this.handleClick = this.handleClick.bind(this);
@@ -31,18 +30,23 @@ export default (mode) => {
 
     render() {
       const { seconds, className } = this.props;
-      const classNames = ['video-react-control', 'video-react-button', 'video-react-icon'];
-      classNames.push(`video-react-icon-${mode}-${seconds}`, `video-react-${mode}-control`);
-      if (this.props.className) {
-        classNames.push(this.props.className);
+      const classNames = [
+        'video-react-control',
+        'video-react-button',
+        'video-react-icon'
+      ];
+      classNames.push(
+        `video-react-icon-${mode}-${seconds}`,
+        `video-react-${mode}-control`
+      );
+      if (className) {
+        classNames.push(className);
       }
       return (
         <button
-          ref={
-            (c) => {
-              this.button = c;
-            }
-          }
+          ref={c => {
+            this.button = c;
+          }}
           className={classNames.join(' ')}
           type="button"
           onClick={this.handleClick}
@@ -57,4 +61,3 @@ export default (mode) => {
   ForwardReplayControl.defaultProps = defaultProps;
   return ForwardReplayControl;
 };
-

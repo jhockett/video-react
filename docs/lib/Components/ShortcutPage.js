@@ -5,7 +5,7 @@ import { Table, Alert } from 'reactstrap';
 import Helmet from 'react-helmet';
 import ShortcutExample from '../examples/Shortcut';
 
-const ShortcutExampleSource = require('!!raw!../examples/Shortcut');
+const ShortcutExampleSource = require('!!raw-loader!../examples/Shortcut');
 
 export default class ShortcutPage extends React.Component {
   render() {
@@ -13,12 +13,11 @@ export default class ShortcutPage extends React.Component {
       <div>
         <Helmet title="Shortcut" />
         <h3>Shortcut</h3>
-        <p>
-          Using keyboard shortcut to control the player.
-        </p>
+        <p>Using keyboard shortcut to control the player.</p>
 
         <Alert color="warning">
-          <strong>Warning!</strong>The shortcut can work only if the player is in active.
+          <strong>Warning!</strong>The shortcut can work only if the player is
+          in active.
         </Alert>
         <h4>Properties</h4>
         <pre>

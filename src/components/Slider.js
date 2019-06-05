@@ -21,11 +21,10 @@ const propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
   valuenow: PropTypes.string,
-  valuetext: PropTypes.string,
+  valuetext: PropTypes.string
 };
 
 export default class Slider extends Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -43,8 +42,16 @@ export default class Slider extends Component {
     this.renderChildren = this.renderChildren.bind(this);
 
     this.state = {
-      active: false,
+      active: false
     };
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousemove', this.handleMouseMove, true);
+    document.removeEventListener('mouseup', this.handleMouseUp, true);
+    document.removeEventListener('touchmove', this.handleMouseMove, true);
+    document.removeEventListener('touchend', this.handleMouseUp, true);
+    document.removeEventListener('keydown', this.handleKeyPress, true);
   }
 
   getProgress() {
@@ -55,9 +62,7 @@ export default class Slider extends Component {
     let progress = getPercent();
 
     // Protect against no duration and other division issues
-    if (typeof progress !== 'number' ||
-      progress < 0 ||
-      progress === Infinity) {
+    if (typeof progress !== 'number' || progress < 0 || progress === Infinity) {
       progress = 0;
     }
     return progress;
@@ -74,8 +79,7 @@ export default class Slider extends Component {
     document.addEventListener('touchend', this.handleMouseUp, true);
 
     this.setState({
-      active: true,
-      distance: 0,
+      active: true
     });
 
     if (this.props.sliderActive) {
@@ -106,7 +110,7 @@ export default class Slider extends Component {
     document.removeEventListener('touchend', this.handleMouseUp, true);
 
     this.setState({
-      active: false,
+      active: false
     });
 
     if (this.props.sliderInactive) {
@@ -141,11 +145,13 @@ export default class Slider extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.which === 37 || event.which === 40) { // Left and Down Arrows
+    if (event.which === 37 || event.which === 40) {
+      // Left and Down Arrows
       event.preventDefault();
       event.stopPropagation();
       this.stepBack();
-    } else if (event.which === 38 || event.which === 39) { // Up and Right Arrows
+    } else if (event.which === 38 || event.which === 39) {
+      // Up and Right Arrows
       event.preventDefault();
       event.stopPropagation();
       this.stepForward();
@@ -186,12 +192,17 @@ export default class Slider extends Component {
 
     return (
       <div
-        className={classNames(this.props.className, {
-          'video-react-slider-vertical': vertical,
-          'video-react-slider-horizontal': !vertical,
-          'video-react-sliding': this.state.active,
-        }, 'video-react-slider')}
+        className={classNames(
+          this.props.className,
+          {
+            'video-react-slider-vertical': vertical,
+            'video-react-slider-horizontal': !vertical,
+            'video-react-sliding': this.state.active
+          },
+          'video-react-slider'
+        )}
         tabIndex="0"
+        role="slider"
         onMouseDown={this.handleMouseDown}
         onTouchStart={this.handleMouseDown}
         onFocus={this.handleFocus}
@@ -203,7 +214,7 @@ export default class Slider extends Component {
         aria-valuemin={0}
         aria-valuemax={100}
       >
-        { this.renderChildren() }
+        {this.renderChildren()}
       </div>
     );
   }

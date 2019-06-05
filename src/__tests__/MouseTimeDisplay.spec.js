@@ -9,9 +9,10 @@ describe('MouseTimeDisplay', () => {
         actions={{}}
         duration={100}
         mouseTime={{
-          time: 10,
+          time: 10
         }}
-      />);
+      />
+    );
     expect(wrapper.type()).toBe('div');
   });
 
@@ -21,23 +22,25 @@ describe('MouseTimeDisplay', () => {
         actions={{}}
         duration={100}
         mouseTime={{
-          time: 10,
+          time: 10
         }}
-      />);
+      />
+    );
     expect(wrapper.hasClass('video-react-mouse-display')).toBe(true);
   });
 
   it('should render with custom text', () => {
-    const text = 'aloha'
+    const text = 'aloha';
     const wrapper = shallow(
       <MouseTimeDisplay
         actions={{}}
         duration={100}
         mouseTime={{
-          time: 10,
+          time: 10
         }}
         text={text}
-      />);
+      />
+    );
     expect(wrapper.prop('data-current-time')).toEqual(text);
   });
 });

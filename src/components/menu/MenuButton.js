@@ -11,17 +11,16 @@ const propTypes = {
   className: PropTypes.string,
   onSelectItem: PropTypes.func,
   children: PropTypes.any,
-  selectedIndex: PropTypes.number,
+  selectedIndex: PropTypes.number
 };
 
 export default class MenuButton extends Component {
-
   constructor(props, context) {
     super(props, context);
 
     this.state = {
       active: false,
-      activateIndex: props.selectedIndex || 0,
+      activateIndex: props.selectedIndex || 0
     };
 
     this.commitSelection = this.commitSelection.bind(this);
@@ -40,13 +39,16 @@ export default class MenuButton extends Component {
     this.handleIndexChange = this.handleIndexChange.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedIndex !== this.props.selectedIndex) {
+      this.activateMenuItem(this.props.selectedIndex);
+    }
+  }
 
   commitSelection(index) {
     this.setState({
       activateIndex: index,
-      active: false,
+      active: false
     });
     this.handleIndexChange(index);
   }
@@ -64,9 +66,9 @@ export default class MenuButton extends Component {
   }
 
   handleClick() {
-    this.setState({
-      active: !this.state.active,
-    });
+    this.setState(prevState => ({
+      active: !prevState.active
+    }));
   }
 
   handleFocus() {
@@ -75,7 +77,7 @@ export default class MenuButton extends Component {
 
   handleBlur() {
     this.setState({
-      active: false,
+      active: false
     });
     document.removeEventListener('keydown', this.handleKeyPress);
   }
@@ -117,7 +119,7 @@ export default class MenuButton extends Component {
       this.commitSelection(this.state.activateIndex);
     } else {
       this.setState({
-        active: true,
+        active: true
       });
     }
   }
@@ -125,7 +127,7 @@ export default class MenuButton extends Component {
   handleEscape() {
     this.setState({
       active: false,
-      activateIndex: 0,
+      activateIndex: 0
     });
   }
 
@@ -133,13 +135,17 @@ export default class MenuButton extends Component {
     // Escape (27) key
     if (event.which === 27) {
       this.handleEscape(event);
-    } else if (event.which === 9) { // Tab (9) key
+    } else if (event.which === 9) {
+      // Tab (9) key
       this.handleTab(event);
-    } else if (event.which === 13) { // Enter (13) key
+    } else if (event.which === 13) {
+      // Enter (13) key
       this.handleReturn(event);
-    } else if (event.which === 38) { // Up (38) key
+    } else if (event.which === 38) {
+      // Up (38) key
       this.handleUpArrow(event);
-    } else if (event.which === 40) { // Down (40) key press
+    } else if (event.which === 40) {
+      // Down (40) key press
       this.handleDownArrow(event);
     }
   }
@@ -174,14 +180,18 @@ export default class MenuButton extends Component {
 
     return (
       <ClickableComponent
-        className={classNames(className, {
-          'video-react-menu-button-inline': !!inline,
-          'video-react-menu-button-popup': !inline,
-          'video-react-menu-button-active': this.state.active,
-        }, 'video-react-control video-react-button video-react-menu-button')}
-        role="presentation"
+        className={classNames(
+          className,
+          {
+            'video-react-menu-button-inline': !!inline,
+            'video-react-menu-button-popup': !inline,
+            'video-react-menu-button-active': this.state.active
+          },
+          'video-react-control video-react-button video-react-menu-button'
+        )}
+        role="button"
         tabIndex="0"
-        ref={(c) => {
+        ref={c => {
           this.menuButton = c;
         }}
         onClick={this.handleClick}

@@ -1,3 +1,91 @@
+<a name="0.13.7"></a>
+## [0.13.7](https://github.com/video-react/video-react/compare/0.13.6...0.13.7) (2019-05-02)
+
+
+### Bug Fixes
+
+* add tabindex to video tag to make it focusable in latest Chrome ([#262](https://github.com/video-react/video-react/issues/262)) ([01291c7](https://github.com/video-react/video-react/commit/01291c7))
+
+
+### Features
+
+* expose MenuButton ([ed835a2](https://github.com/video-react/video-react/commit/ed835a2))
+
+
+
+<a name="0.13.6"></a>
+## [0.13.6](https://github.com/video-react/video-react/compare/0.13.5...0.13.6) (2019-03-18)
+
+
+### Bug Fixes
+
+* removed a dubious player state setting that caused LoadSpinner invisible problem ([363a659](https://github.com/video-react/video-react/commit/363a659))
+* **Slider:** remove event listeners when component will unmount ([17baf50](https://github.com/video-react/video-react/commit/17baf50))
+
+
+
+<a name="0.13.5"></a>
+## [0.13.5](https://github.com/video-react/video-react/compare/0.13.4...0.13.5) (2019-03-13)
+
+
+### Bug Fixes
+
+* add missing '@babel/runtime' dependencies ([7ff1036](https://github.com/video-react/video-react/commit/7ff1036))
+
+
+
+<a name="0.13.4"></a>
+## [0.13.4](https://github.com/video-react/video-react/compare/0.13.3...0.13.4) (2019-03-10)
+
+### Features
+
+* Customizable delay time for auto hide of ControlBar [#233](https://github.com/video-react/video-react/issues/233)
+
+
+### Bug Fixes
+
+* Missing commonjs support ([#235](https://github.com/video-react/video-react/issues/235))
+
+
+<a name="0.13.3"></a>
+## [0.13.3](https://github.com/video-react/video-react/compare/0.13.2...0.13.3) (2019-03-02)
+
+
+### Bug Fixes
+
+* fix `preload` prop in `Player`  ([#230](https://github.com/video-react/video-react/issues/230))
+
+
+
+<a name="0.13.2"></a>
+## [0.13.2](https://github.com/video-react/video-react/compare/0.13.1...0.13.2) (2019-01-11)
+
+
+### Bug Fixes
+
+* Fixed className propagation problem ([5a169cd](https://github.com/video-react/video-react/commit/5a169cd756bb10cd64f09f561157cb71588fbdaa)), closes [#186](https://github.com/video-react/video-react/issues/186)
+
+
+<a name="0.13.1"></a>
+## [0.13.1](https://github.com/video-react/video-react/compare/0.13.0...0.13.1) (2018-10-29)
+
+
+
+<a name="0.13.0"></a>
+## [0.13.0](https://github.com/video-react/video-react/compare/0.12.0...0.13.0) (2018-07-07)
+
+
+
+<a name="0.12.0"></a>
+## [0.12.0](https://github.com/video-react/video-react/compare/0.11.1...0.12.0) (2018-07-06)
+
+
+### Bug Fixes
+
+* Build dist before build docs ([85a11dd](https://github.com/video-react/video-react/commit/85a11dd))
+
+
+
 <a name="0.11.2"></a>
 ## [0.11.2](https://github.com/video-react/video-react/compare/0.11.1...0.11.2) (2018-06-07)
 

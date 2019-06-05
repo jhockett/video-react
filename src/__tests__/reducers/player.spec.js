@@ -1,12 +1,28 @@
 import deepFreeze from 'deep-freeze';
-import { default as player } from '../../reducers/player';
-import { LOAD_START, CAN_PLAY,
-  WAITING, PLAYING,
-  PLAY, PAUSE, END, SEEKING, SEEKED,
-  SEEKING_TIME, END_SEEKING, DURATION_CHANGE,
-  TIME_UPDATE, VOLUME_CHANGE, PROGRESS_CHANGE,
-  RATE_CHANGE } from '../../actions/video';
-import { FULLSCREEN_CHANGE, PLAYER_ACTIVATE, USER_ACTIVATE } from '../../actions/player';
+import player from '../../reducers/player';
+import {
+  LOAD_START,
+  CAN_PLAY,
+  WAITING,
+  PLAYING,
+  PLAY,
+  PAUSE,
+  END,
+  SEEKING,
+  SEEKED,
+  SEEKING_TIME,
+  END_SEEKING,
+  DURATION_CHANGE,
+  TIME_UPDATE,
+  VOLUME_CHANGE,
+  PROGRESS_CHANGE,
+  RATE_CHANGE
+} from '../../actions/video';
+import {
+  FULLSCREEN_CHANGE,
+  PLAYER_ACTIVATE,
+  USER_ACTIVATE
+} from '../../actions/player';
 
 describe('player', () => {
   it('should return the initail state', () => {
@@ -36,12 +52,11 @@ describe('player', () => {
     expect(player(undefined, {})).toEqual(expectedInitialState);
   });
 
-
   it('should handle LOAD_START action', () => {
-    let bufferTwo = {
+    const bufferTwo = {
       length: 2,
-      start: function () {},
-      end: function () {}
+      start() {},
+      end() {}
     };
     const stateBefore = {
       hasStarted: false,
@@ -59,8 +74,8 @@ describe('player', () => {
       ended: false,
       buffered: {
         length: 2,
-        start: function () {},
-        end: function () {}
+        start() {},
+        end() {}
       }
     };
     deepFreeze(stateBefore);
@@ -97,13 +112,13 @@ describe('player', () => {
 
   it('should handle WAITING action with FALSE', () => {
     const stateBefore = {
-      waiting: false,
+      waiting: false
     };
     const action = {
-      type: WAITING,
+      type: WAITING
     };
     const stateAfter = {
-      waiting: true,
+      waiting: true
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -112,13 +127,13 @@ describe('player', () => {
 
   it('should handle WAITING action with WAITING true', () => {
     const stateBefore = {
-      waiting: true,
+      waiting: true
     };
     const action = {
-      type: WAITING,
+      type: WAITING
     };
     const stateAfter = {
-      waiting: true,
+      waiting: true
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -127,13 +142,13 @@ describe('player', () => {
 
   it('should handle PLAYING action with WAITING false', () => {
     const stateBefore = {
-      waiting: false,
+      waiting: false
     };
     const action = {
-      type: PLAYING,
+      type: PLAYING
     };
     const stateAfter = {
-      waiting: false,
+      waiting: false
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -142,13 +157,13 @@ describe('player', () => {
 
   it('should handle PLAYING action with WAITING true', () => {
     const stateBefore = {
-      waiting: true,
+      waiting: true
     };
     const action = {
-      type: PLAYING,
+      type: PLAYING
     };
     const stateAfter = {
-      waiting: false,
+      waiting: false
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -162,7 +177,7 @@ describe('player', () => {
       autoPaused: false,
       waiting: false,
       hasStarted: true,
-      duration: 0,
+      duration: 0
     };
     const action = {
       type: PLAY,
@@ -185,13 +200,13 @@ describe('player', () => {
 
   it('should handle PAUSE action', () => {
     const stateBefore = {
-      paused: false,
+      paused: false
     };
     const action = {
-      type: PAUSE,
+      type: PAUSE
     };
     const stateAfter = {
-      paused: true,
+      paused: true
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -200,13 +215,13 @@ describe('player', () => {
 
   it('should handle END action', () => {
     const stateBefore = {
-      ended: false,
+      ended: false
     };
     const action = {
-      type: END,
+      type: END
     };
     const stateAfter = {
-      ended: true,
+      ended: true
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -215,13 +230,13 @@ describe('player', () => {
 
   it('should handle SEEKING action', () => {
     const stateBefore = {
-      seeking: false,
+      seeking: false
     };
     const action = {
-      type: SEEKING,
+      type: SEEKING
     };
     const stateAfter = {
-      seeking: true,
+      seeking: true
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -230,13 +245,13 @@ describe('player', () => {
 
   it('should handle SEEKED action', () => {
     const stateBefore = {
-      seeking: false,
+      seeking: false
     };
     const action = {
-      type: SEEKED,
+      type: SEEKED
     };
     const stateAfter = {
-      seeking: false,
+      seeking: false
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
@@ -245,7 +260,7 @@ describe('player', () => {
 
   it('should handle SEEKING_TIME action', () => {
     const stateBefore = {
-      seekingTime: 12,
+      seekingTime: 12
     };
     const action = {
       type: SEEKING_TIME,
@@ -333,16 +348,16 @@ describe('player', () => {
   });
 
   it('should handle PROGRESS_CHANGE action', () => {
-    let bufferThree = {
+    const bufferThree = {
       length: 3,
-      start: function () {},
-      end: function () {}
+      start() {},
+      end() {}
     };
     const stateBefore = {
       buffered: {
         length: 1,
-        start: function () {},
-        end: function () {}
+        start() {},
+        end() {}
       }
     };
     const action = {

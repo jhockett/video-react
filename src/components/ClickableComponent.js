@@ -3,19 +3,18 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 const propTypes = {
-  tagName: PropTypes.string.isRequired,
+  tagName: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 const defaultProps = {
-  tagName: 'div',
+  tagName: 'div'
 };
 
 export default class ClickableComponent extends Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -69,7 +68,6 @@ export default class ClickableComponent extends Component {
       />
     );
   }
-
 }
 
 ClickableComponent.propTypes = propTypes;
